@@ -12,12 +12,18 @@ const menuItems = document.querySelectorAll('.menu-item');
 
 // Loop through each menu item
 menuItems.forEach(item => {
+  let isRotated = false;
+
   item.addEventListener('mouseenter', () => {
     const paragraph = item.querySelector('p');
     const header = item.querySelector('h3');
     paragraph.classList.add('active');
     header.classList.add('active');
-    item.style.transform = "rotateY(180deg)"; // Add rotation
+    
+    if (!isRotated) {
+      item.style.transform = "rotateY(180deg)"; // Add rotation
+      isRotated = true;
+    }
   });
 
   item.addEventListener('mouseleave', () => {
@@ -25,7 +31,11 @@ menuItems.forEach(item => {
     const header = item.querySelector('h3');
     paragraph.classList.remove('active');
     header.classList.remove('active');
-    item.style.transform = ""; // Reset rotation
+    
+    if (isRotated) {
+      item.style.transform = ""; // Reset rotation
+      isRotated = false;
+    }
   });
 });
 
