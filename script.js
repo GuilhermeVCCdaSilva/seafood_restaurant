@@ -1,10 +1,21 @@
 // Parallax effect on scroll
-window.addEventListener("scroll", function() {
+function handleParallax() {
   const parallax = document.querySelector("#home");
   let scrollPosition = window.pageYOffset;
+  // mobile devices
+  if (window.innerWidth < 768) {
+    // Adjust parallax effect for smaller screens
+    parallax.style.backgroundPosition = `center bottom`;
+  } else {
+    // Adjust parallax effect based on scroll position
+    parallax.style.backgroundPosition = `center bottom -${scrollPosition * 0.7}px`;
+  }
+}
 
-  parallax.style.backgroundPosition = `center bottom -${scrollPosition * 0.7}px`;
-});
+window.addEventListener("scroll", handleParallax);
+window.addEventListener("resize", handleParallax);
+handleParallax(); // Call the function initially
+
 
 // Get all menu items
 const menuItems = document.querySelectorAll('.menu-item');
