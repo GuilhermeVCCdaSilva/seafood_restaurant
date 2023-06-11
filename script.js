@@ -1,11 +1,13 @@
 // Parallax effect on scroll
+// Parallax effect on scroll
 function handleParallax() {
   const parallax = document.querySelector("#home");
   let scrollPosition = window.pageYOffset;
-  // mobile devices
+
+  // Mobile devices
   if (window.innerWidth < 768) {
     // Adjust parallax effect for smaller screens
-    parallax.style.backgroundPosition = `center bottom`;
+    parallax.style.backgroundPosition = `center top`;
   } else {
     // Adjust parallax effect based on scroll position
     parallax.style.backgroundPosition = `center bottom -${scrollPosition * 0.7}px`;
