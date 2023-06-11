@@ -285,58 +285,5 @@ footer a:hover {
     text-decoration: underline;
 }
   
-/* Add CSS styles for mobile responsiveness */
-@media only screen and (max-width: 768px) {
-  /* Adjust header and logo styles */
-  header {
-    flex-direction: column;
-    align-items: center;
-  }
-  .logo {
-    margin-bottom: 20px;
-  }
-  .logo img {
-    width: 70px;
-    height: 55px;
-  }
-  nav {
-    margin-top: 20px;
-  }
-  nav ul {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav li {
-    margin: 10px 0;
-  }
-  /* Adjust video container styles */
-  .video-container video {
-    width: 100%;
-    height: auto;
-  }
-  /* Adjust location content styles */
-  .location-content {
-    margin-top: 20px;
-  }
-  .location-map {
-    height: 300px;
-  }
-  /* Adjust contact form styles */
-  #contact form {
-    display: flex;
-    flex-direction: column;
-  }
-  #contact label,
-  #contact input,
-  #contact textarea,
-  #contact button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-  /* Adjust footer styles */
-  footer p,
-  footer ul {
-    text-align: center;
-  }
-}
+
   
