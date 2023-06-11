@@ -1,23 +1,24 @@
 // Parallax effect on scroll
-// Parallax effect on scroll
 function handleParallax() {
   const parallax = document.querySelector("#home");
-  let scrollPosition = window.pageYOffset;
+  const navBar = document.querySelector("#navbar"); // Assuming the navigation bar has an id of "navbar"
+  const scrollPosition = window.pageYOffset;
 
   // Mobile devices
-  if (window.innerWidth < 768) {
+  //if (window.innerWidth < 768) {
     // Adjust parallax effect for smaller screens
-    parallax.style.backgroundPosition = `center top`;
-  } else {
+  //  parallax.style.transform = ;
+  //} else {
     // Adjust parallax effect based on scroll position
+    const blurValue = (scrollPosition * 0.01).toFixed(1); // Calculate the blur value based on scroll position
     parallax.style.backgroundPosition = `center bottom -${scrollPosition * 0.7}px`;
-  }
+    parallax.style.filter = `blur(${blurValue}px)`; // Apply the blur effect
+  //}
 }
 
 window.addEventListener("scroll", handleParallax);
 window.addEventListener("resize", handleParallax);
 handleParallax(); // Call the function initially
-
 
 // Get all menu items
 const menuItems = document.querySelectorAll('.menu-item');

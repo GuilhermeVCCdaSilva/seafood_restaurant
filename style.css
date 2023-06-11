@@ -219,6 +219,10 @@ body {
     font-size: 2rem;
     margin-bottom: 20px;
   }
+
+  #contact button {
+    font-size: 15px;
+  }
   
   form {
     display: flex;
