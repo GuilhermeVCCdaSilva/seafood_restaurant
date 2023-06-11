@@ -57,3 +57,20 @@ document.querySelectorAll('nav a').forEach(link => {
     target.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+// Mobile-responsive adjustments
+function handleMobileViewport() {
+  if (window.innerWidth < 768) {
+    // Adjust parallax effect for smaller screens
+    const parallax = document.querySelector("#home");
+    parallax.style.backgroundPosition = `center bottom`;
+    
+    // Adjust menu item rotation for smaller screens
+    menuItems.forEach(item => {
+      item.style.transform = "";
+    });
+  }
+}
+
+window.addEventListener('resize', handleMobileViewport);
+handleMobileViewport(); // Call the function initially
