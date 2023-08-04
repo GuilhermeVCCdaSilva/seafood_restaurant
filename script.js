@@ -1,9 +1,3 @@
-document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
-  var header = document.querySelector('header');
-  header.style.display = header.style.display === 'flex' ? 'none' : 'flex';
-});
-
-
 // Parallax effect on scroll
 function handleParallax() {
   const parallax = document.querySelector("#home");
