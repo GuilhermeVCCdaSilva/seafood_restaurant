@@ -66,6 +66,10 @@ menuItems.forEach(item => {
   // Add event listeners for mouse events
   item.addEventListener('mouseenter', handleMouseEnter);
   item.addEventListener('mouseleave', handleMouseLeave);
+
+   // Add event listeners for touch events
+   item.addEventListener('touchstart', handleMouseEnter);
+   item.addEventListener('touchend', handleMouseLeave);
 });
 
 const isMobileDevice = () => {
