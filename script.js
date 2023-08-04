@@ -52,10 +52,29 @@ menuItems.forEach(item => {
   // Add event listeners for mouse events
   item.addEventListener('mouseenter', handleMouseEnter);
   item.addEventListener('mouseleave', handleMouseLeave);
+  
+ // Check if it's a touch device
+ const isTouchDevice = 'ontouchstart' in window || navigator.msMaxTouchPoints > 0;
 
-  // Add event listeners for touch events
-  item.addEventListener('touchstart', handleMouseEnter);
-  item.addEventListener('touchend', handleMouseLeave);
+ if (isTouchDevice) {
+   // Add Intersection Observer for touch devices
+   const observerOptions = {
+     root: null, // Use the viewport as the root
+     threshold: 0.5, // When at least 50% of the target is in view
+   };
+
+   const observer = new IntersectionObserver((entries, observer) => {
+     entries.forEach(entry => {
+       if (entry.isIntersecting) {
+         handleMouseEnter();
+       } else {
+         handleMouseLeave();
+       }
+     });
+   }, observerOptions);
+
+   observer.observe(item);
+ }
 });
 
 // Smooth scrolling for navigation links
