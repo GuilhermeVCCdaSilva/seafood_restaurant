@@ -8,7 +8,7 @@ function handleParallax() {
     parallax.style.transform = "";
   } else {
     // Adjust parallax effect based on scroll position
-    const blurValue = (scrollPosition * 0.01).toFixed(1); // Calculate the blur value based on scroll position
+    const blurValue = Math.round(scrollPosition * 0.01); // Calculate the blur value based on scroll position
     parallax.style.backgroundPosition = `center bottom -${scrollPosition * 0.7}px`;
     parallax.style.filter = `blur(${blurValue}px)`; // Apply the blur effect
   }
@@ -52,39 +52,16 @@ const isMobileDevice = () => {
   return window.innerWidth < 768;
 };
 
-// Function to check if the page is visible
-const isPageVisible = () => {
-  return !document.hidden;
-};
-
-// Function to handle touch start and touch end events for mobile devices
-const handleTouchEvents = (item, touchStart) => {
-  if (isPageVisible()) {
-    if (touchStart) {
-      handleMouseEnter(item);
-    } else {
-      handleMouseLeave(item);
-    }
-  }
-};
-
 // Intersection Observer callback function
 const handleIntersection = (entries, observer) => {
   entries.forEach(entry => {
     const item = entry.target;
     if (entry.isIntersecting) {
-      if (isMobileDevice()) {
-        item.addEventListener('touchstart', () => handleTouchEvents(item, true));
-        item.addEventListener('touchend', () => handleTouchEvents(item, false));
-      } else {
-        item.addEventListener('mouseenter', () => handleMouseEnter(item));
-        item.addEventListener('mouseleave', () => handleMouseLeave(item));
-      }
+      item.addEventListener('pointerenter', () => handleMouseEnter(item));
+      item.addEventListener('pointerleave', () => handleMouseLeave(item));
     } else {
-      item.removeEventListener('mouseenter', () => handleMouseEnter(item));
-      item.removeEventListener('mouseleave', () => handleMouseLeave(item));
-      item.removeEventListener('touchstart', () => handleTouchEvents(item, true));
-      item.removeEventListener('touchend', () => handleTouchEvents(item, false));
+      item.removeEventListener('pointerenter', () => handleMouseEnter(item));
+      item.removeEventListener('pointerleave', () => handleMouseLeave(item));
     }
   });
 };
@@ -105,7 +82,6 @@ menuItems.forEach(item => {
   observer.observe(item);
 });
 
-
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', (event) => {
@@ -118,7 +94,8 @@ document.querySelectorAll('nav a').forEach(link => {
   });
 });
 
+// Toggle the header visibility when clicking the mobile menu button
 document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
   var header = document.querySelector('header');
-  header.classList.toggle('hidden'); // Add or remove the 'hidden' class
+  header.style.display = header.style.display === 'none' ? 'flex' : 'none';
 });
