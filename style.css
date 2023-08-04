@@ -161,13 +161,12 @@ body {
   font-size: 0.9rem;
 }
 
-.menu-item p.active {
-  opacity: 1;
-}
-
+.menu-item p.active,
 .menu-item h3.active {
   opacity: 1;
+  transform: rotateY(180deg); /* Add rotation transformation on active state */
 }
+
   /* About section */
   .about-content {
     text-align: center;
