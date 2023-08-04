@@ -18,7 +18,7 @@ window.addEventListener("scroll", handleParallax);
 window.addEventListener("resize", handleParallax);
 handleParallax(); // Call the function initially
 
-// Get all menu items
+/// Get all menu items
 const menuItems = document.querySelectorAll('.menu-item');
 
 // Function to handle mouse enter event
@@ -47,21 +47,33 @@ const handleMouseLeave = (item) => {
   }
 };
 
-// Function to check if the user is on a mobile device
-const isMobileDevice = () => {
-  return window.innerWidth < 768;
+// Function to handle intersection for mobile devices
+const handleIntersectionMobile = (entries, observer) => {
+  entries.forEach(entry => {
+    const item = entry.target;
+    if (entry.isIntersecting) {
+      handleMouseEnter(item);
+    } else {
+      handleMouseLeave(item);
+    }
+  });
 };
 
-// Intersection Observer callback function
-const handleIntersection = (entries, observer) => {
+// Function to check if the user is on a mobile device
+const isMobileDevice = () => {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+};
+
+// Intersection Observer callback function for desktop devices
+const handleIntersectionDesktop = (entries, observer) => {
   entries.forEach(entry => {
     const item = entry.target;
     if (entry.isIntersecting) {
       item.addEventListener('pointerenter', () => handleMouseEnter(item));
-      item.addEventListener('pointerleave', () => handleMouseLeave(item));
+      item.addEventListener('pointleave', () => handleMouseLeave(item));
     } else {
       item.removeEventListener('pointerenter', () => handleMouseEnter(item));
-      item.removeEventListener('pointerleave', () => handleMouseLeave(item));
+      item.removeEventListener('pointleave', () => handleMouseLeave(item));
     }
   });
 };
@@ -73,15 +85,20 @@ const options = {
   threshold: 0.5, // Trigger when at least 50% of the element is visible
 };
 
-// Create a new Intersection Observer
-const observer = new IntersectionObserver(handleIntersection, options);
-
-// Loop through each menu item and observe it
-menuItems.forEach(item => {
-  item.isRotated = false;
-  observer.observe(item);
-});
-
+// Check if the user is on a mobile device and observe accordingly
+if (isMobileDevice()) {
+  const observerMobile = new IntersectionObserver(handleIntersectionMobile, options);
+  menuItems.forEach(item => {
+    item.isRotated = false;
+    observerMobile.observe(item);
+  });
+} else {
+  const observerDesktop = new IntersectionObserver(handleIntersectionDesktop, options);
+  menuItems.forEach(item => {
+    item.isRotated = false;
+    observerDesktop.observe(item);
+  });
+}
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', (event) => {
