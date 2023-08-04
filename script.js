@@ -114,5 +114,5 @@ document.querySelectorAll('nav a').forEach(link => {
 // Toggle the header visibility when clicking the mobile menu button
 document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
   var header = document.querySelector('header');
-  header.style.display = header.style.display === 'flex' ? 'none' : 'flex';
+  header.classList.toggle('visible');
 });
