@@ -1,12 +1,7 @@
-
-function toggleHeader() {
+document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
   var header = document.querySelector('header');
-  if (header.style.display === '' || header.style.display === 'flex') {
-    header.style.display = 'none';
-  } else {
-    header.style.display = 'flex';
-  }
-}
+  header.style.display = header.style.display === 'flex' ? 'none' : 'flex';
+});
 
 
 // Parallax effect on scroll
