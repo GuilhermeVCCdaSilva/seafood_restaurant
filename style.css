@@ -56,7 +56,7 @@ body {
   
   /* Style the home section */
   #home {
-    background-image: url('https://res.cloudinary.com/tf-lab/image/upload/w_800,c_fill,q_auto,f_auto,b_white/restaurant/7b57decd-be69-4187-8dbf-44b8e33aecfb/1ad82d4f-7587-4edd-9bd1-bcc2328a3ba3.jpg');
+    background-image: url('../seafood_restaurant/media/imgs/paginaInicial.jpg');
     background-size: cover;
     background-position: center center;
     height: 100vh;
