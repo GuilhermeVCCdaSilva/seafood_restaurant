@@ -8,10 +8,15 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
+@media only screen and (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
 /*CSS styles for mobile responsiveness */
 @media only screen and (max-width: 768px) {
   /* Adjust header and logo styles */
-    header {
+  header {
     display: none; /* Hide the header initially on mobile */
     flex-direction: column;
     align-items: center;

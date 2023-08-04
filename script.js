@@ -1,9 +1,3 @@
-document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
-  var header = document.querySelector('header');
-  header.style.display = header.style.display === 'flex' ? 'none' : 'flex';
-});
-
-
 // Parallax effect on scroll
 function handleParallax() {
   const parallax = document.querySelector("#home");
@@ -111,6 +105,7 @@ menuItems.forEach(item => {
   observer.observe(item);
 });
 
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', (event) => {
@@ -121,4 +116,9 @@ document.querySelectorAll('nav a').forEach(link => {
     // Scroll to the target element
     target.scrollIntoView({ behavior: 'smooth' });
   });
+});
+
+document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
+  var header = document.querySelector('header');
+  header.classList.toggle('hidden'); // Add or remove the 'hidden' class
 });
