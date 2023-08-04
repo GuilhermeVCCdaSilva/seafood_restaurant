@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <style>
+      @media only screen and (min-width: 769px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
 /*CSS styles for mobile responsiveness */
 @media only screen and (max-width: 768px) {
   /* Adjust header and logo styles */
@@ -362,7 +367,11 @@
     </footer>
     
     
-  
+  <script>  // Toggle header visibility on mobile devices
+    document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
+      var header = document.querySelector('header');
+      header.style.display = header.style.display === 'flex' ? 'none' : 'flex';
+    });   </script>
   <script src="script.js"></script>
 </body>
 </html>

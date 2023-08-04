@@ -1,9 +1,3 @@
-document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
-  var header = document.querySelector('header');
-  header.style.display = header.style.display === 'flex' ? 'none' : 'flex';
-});
-
-
 // Parallax effect on scroll
 function handleParallax() {
   const parallax = document.querySelector("#home");
@@ -23,6 +17,9 @@ function handleParallax() {
 window.addEventListener("scroll", handleParallax);
 window.addEventListener("resize", handleParallax);
 handleParallax(); // Call the function initially
+
+// Get all menu items
+const menuItems = document.querySelectorAll('.menu-item');
 
 // Function to handle mouse enter event
 const handleMouseEnter = (item) => {
@@ -64,16 +61,7 @@ const isPageVisible = () => {
 const handleTouchEvents = (item, touchStart) => {
   if (isPageVisible()) {
     if (touchStart) {
-      // Check if the target element is visible on the page
-      const rect = item.getBoundingClientRect();
-      const isVisible = (
-        rect.top >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-      );
-
-      if (isVisible) {
-        handleMouseEnter(item);
-      }
+      handleMouseEnter(item);
     } else {
       handleMouseLeave(item);
     }
@@ -111,14 +99,12 @@ const options = {
 // Create a new Intersection Observer
 const observer = new IntersectionObserver(handleIntersection, options);
 
-// Get all menu items
-const menuItems = document.querySelectorAll('.menu-item');
-
 // Loop through each menu item and observe it
 menuItems.forEach(item => {
   item.isRotated = false;
   observer.observe(item);
 });
+
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
