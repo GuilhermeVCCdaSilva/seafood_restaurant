@@ -21,31 +21,45 @@ handleParallax(); // Call the function initially
 // Get all menu items
 const menuItems = document.querySelectorAll('.menu-item');
 
+// Function to rotate the menu item
+const rotateMenuItem = (item) => {
+  const paragraph = item.querySelector('p');
+  const header = item.querySelector('h3');
+  paragraph.classList.add('active');
+  header.classList.add('active');
+
+  if (!item.isRotated) {
+    item.style.transform = "rotateY(180deg)"; // Add rotation
+    item.isRotated = true;
+  }
+};
+
+// Function to reset rotation of the menu item
+const resetRotation = (item) => {
+  const paragraph = item.querySelector('p');
+  const header = item.querySelector('h3');
+  paragraph.classList.remove('active');
+  header.classList.remove('active');
+
+  if (item.isRotated) {
+    item.style.transform = ""; // Reset rotation
+    item.isRotated = false;
+  }
+};
+
 // Loop through each menu item
 menuItems.forEach(item => {
-  let isRotated = false;
+  item.isRotated = false;
 
   const handleMouseEnter = () => {
-    const paragraph = item.querySelector('p');
-    const header = item.querySelector('h3');
-    paragraph.classList.add('active');
-    header.classList.add('active');
-
-    if (!isRotated) {
-      item.style.transform = "rotateY(180deg)"; // Add rotation
-      isRotated = true;
+    if (!isMobileDevice()) {
+      rotateMenuItem(item);
     }
   };
 
   const handleMouseLeave = () => {
-    const paragraph = item.querySelector('p');
-    const header = item.querySelector('h3');
-    paragraph.classList.remove('active');
-    header.classList.remove('active');
-
-    if (isRotated) {
-      item.style.transform = ""; // Reset rotation
-      isRotated = false;
+    if (!isMobileDevice()) {
+      resetRotation(item);
     }
   };
 
@@ -65,13 +79,21 @@ const options = {
 };
 
 if (isMobileDevice()) {
-  const observerMobile = new IntersectionObserver(options);
+  const observerMobile = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      const item = entry.target;
+      if (entry.isIntersecting) {
+        rotateMenuItem(item);
+      } else {
+        resetRotation(item);
+      }
+    });
+  }, options);
+
   menuItems.forEach((item) => {
-    item.isRotated = false;
     observerMobile.observe(item);
   });
 }
-
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
