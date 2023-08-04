@@ -1,3 +1,14 @@
+
+function toggleHeader() {
+  var header = document.querySelector('header');
+  if (header.style.display === '' || header.style.display === 'flex') {
+    header.style.display = 'none';
+  } else {
+    header.style.display = 'flex';
+  }
+}
+
+
 // Parallax effect on scroll
 function handleParallax() {
   const parallax = document.querySelector("#home");
@@ -104,7 +115,6 @@ menuItems.forEach(item => {
   item.isRotated = false;
   observer.observe(item);
 });
-
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
