@@ -11,10 +11,25 @@
 /*CSS styles for mobile responsiveness */
 @media only screen and (max-width: 768px) {
   /* Adjust header and logo styles */
-  header {
+    header {
+    display: none; /* Hide the header initially on mobile */
     flex-direction: column;
     align-items: center;
   }
+
+  /* Mobile menu button styles */
+  .mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: #000; /* Adjust the color as needed */
+    font-size: 24px;
+    cursor: pointer;
+    margin: 10px;
+    padding: 5px;
+    /* Add any other styles you want for the button */
+  }
+
   .logo {
     margin-bottom: 20px;
   }
@@ -79,19 +94,26 @@
   </style>
 </head>
 <body>
-    <header>
+  <header>
     <div class="logo">
-        <img src="https://previews.123rf.com/images/asmati/asmati1603/asmati160301257/53564131-fish-line-vector-icon-on-transparent-background.jpg" alt="Seefood Restaurant" style="width: 90px; height: 70px;">
-        </div>     
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+      <img src="https://previews.123rf.com/images/asmati/asmati1603/asmati160301257/53564131-fish-line-vector-icon-on-transparent-background.jpg" alt="Seefood Restaurant" style="width: 90px; height: 70px;">
+    </div>     
+
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+   <!-- Mobile menu button -->
+   <button id="toggleHeaderBtn" class="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
+  </button>
+
 
     <!-- Home Section -->
     <section id="home">
@@ -344,5 +366,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-  

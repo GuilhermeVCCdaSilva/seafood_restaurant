@@ -1,4 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap');
+@media only screen and (min-width: 769px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
 
 /* Reset default browser styles */
 * {
@@ -288,6 +293,4 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
-  
-
   
