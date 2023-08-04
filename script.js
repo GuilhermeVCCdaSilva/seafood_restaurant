@@ -91,9 +91,9 @@ const handleIntersection = (entries, observer) => {
 
 // Options for Intersection Observer
 const options = {
-  root: null,
-  rootMargin: '0px',
-  threshold: 0, // Trigger when any part of the element is visible
+  root: null, // Use the viewport as the root
+  rootMargin: '0px', // No offset from the viewport edge
+  threshold: 0.5, // Trigger when at least 50% of the element is visible
 };
 
 // Create a new Intersection Observer
@@ -104,7 +104,6 @@ menuItems.forEach(item => {
   item.isRotated = false;
   observer.observe(item);
 });
-
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
