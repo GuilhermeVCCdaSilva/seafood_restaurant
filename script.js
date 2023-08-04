@@ -18,87 +18,61 @@ window.addEventListener("scroll", handleParallax);
 window.addEventListener("resize", handleParallax);
 handleParallax(); // Call the function initially
 
-/// Get all menu items
+// Get all menu items
 const menuItems = document.querySelectorAll('.menu-item');
 
-// Function to handle mouse enter event
-const handleMouseEnter = (item) => {
-  const paragraph = item.querySelector('p');
-  const header = item.querySelector('h3');
-  paragraph.classList.add('active');
-  header.classList.add('active');
+// Loop through each menu item
+menuItems.forEach(item => {
+  let isRotated = false;
 
-  if (!item.isRotated) {
-    item.style.transform = "rotateY(180deg)"; // Add rotation
-    item.isRotated = true;
-  }
-};
+  const handleMouseEnter = () => {
+    const paragraph = item.querySelector('p');
+    const header = item.querySelector('h3');
+    paragraph.classList.add('active');
+    header.classList.add('active');
 
-// Function to handle mouse leave event
-const handleMouseLeave = (item) => {
-  const paragraph = item.querySelector('p');
-  const header = item.querySelector('h3');
-  paragraph.classList.remove('active');
-  header.classList.remove('active');
-
-  if (item.isRotated) {
-    item.style.transform = ""; // Reset rotation
-    item.isRotated = false;
-  }
-};
-
-// Function to handle intersection for mobile devices
-const handleIntersectionMobile = (entries, observer) => {
-  entries.forEach(entry => {
-    const item = entry.target;
-    if (entry.isIntersecting) {
-      handleMouseEnter(item);
-    } else {
-      handleMouseLeave(item);
+    if (!isRotated) {
+      item.style.transform = "rotateY(180deg)"; // Add rotation
+      isRotated = true;
     }
-  });
-};
+  };
 
-// Function to check if the user is on a mobile device
+  const handleMouseLeave = () => {
+    const paragraph = item.querySelector('p');
+    const header = item.querySelector('h3');
+    paragraph.classList.remove('active');
+    header.classList.remove('active');
+
+    if (isRotated) {
+      item.style.transform = ""; // Reset rotation
+      isRotated = false;
+    }
+  };
+
+  // Add event listeners for mouse events
+  item.addEventListener('mouseenter', handleMouseEnter);
+  item.addEventListener('mouseleave', handleMouseLeave);
+});
+
 const isMobileDevice = () => {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  return window.innerWidth <= 768; // Change the width value as needed for your mobile breakpoint
 };
 
-// Intersection Observer callback function for desktop devices
-const handleIntersectionDesktop = (entries, observer) => {
-  entries.forEach(entry => {
-    const item = entry.target;
-    if (entry.isIntersecting) {
-      item.addEventListener('pointerenter', () => handleMouseEnter(item));
-      item.addEventListener('pointleave', () => handleMouseLeave(item));
-    } else {
-      item.removeEventListener('pointerenter', () => handleMouseEnter(item));
-      item.removeEventListener('pointleave', () => handleMouseLeave(item));
-    }
-  });
-};
-
-// Options for Intersection Observer
 const options = {
-  root: null, // Use the viewport as the root
-  rootMargin: '0px', // No offset from the viewport edge
-  threshold: 0.5, // Trigger when at least 50% of the element is visible
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.5,
 };
 
-// Check if the user is on a mobile device and observe accordingly
 if (isMobileDevice()) {
-  const observerMobile = new IntersectionObserver(handleIntersectionMobile, options);
-  menuItems.forEach(item => {
+  const observerMobile = new IntersectionObserver(options);
+  menuItems.forEach((item) => {
     item.isRotated = false;
     observerMobile.observe(item);
   });
-} else {
-  const observerDesktop = new IntersectionObserver(handleIntersectionDesktop, options);
-  menuItems.forEach(item => {
-    item.isRotated = false;
-    observerDesktop.observe(item);
-  });
 }
+
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', (event) => {
@@ -114,5 +88,5 @@ document.querySelectorAll('nav a').forEach(link => {
 // Toggle the header visibility when clicking the mobile menu button
 document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
   var header = document.querySelector('header');
-  header.style.display = header.style.display === 'none' ? 'flex' : 'none';
+  header.style.display = header.style.display === 'flex' ? 'none' : 'flex';
 });
