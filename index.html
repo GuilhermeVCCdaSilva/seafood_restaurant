@@ -15,6 +15,7 @@
 }
 /*CSS styles for mobile*/
 @media only screen and (max-width: 768px) {
+
   /* Adjust header and logo styles */
   /* Hide the header by default */
 header {
@@ -124,7 +125,7 @@ header.visible {
 <body>
   <header>
     <div class="logo">
-      <img src="https://previews.123rf.com/images/asmati/asmati1603/asmati160301257/53564131-fish-line-vector-icon-on-transparent-background.jpg" alt="Seefood Restaurant" style="width: 90px; height: 70px;">
+      <img src="media/imgs/logoPeixaria.jpeg" alt="Peixaria Logo" style="width: 100px; height: 75px;">
     </div>     
 
     <nav>
@@ -150,62 +151,92 @@ header.visible {
   </section>
 
   <section id="menu">
-    <h2>Especialidades</h2>
-    <div class="menu-container">
-      <div class="menu-item">
-        <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
-        <h3>Bacalhau á Lagareiro
-        <br>  
-          12.99€
-        </h3>
-        <p>Our signature dish is a tantalizing combination of linguine pasta and a medley of fresh seafood, including succulent shrimp, tender scallops, and flavorful mussels, all tossed in a rich garlic butter sauce. Served with a side of garlic bread.</p>
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/PolvoLagareiro.jpg" alt="Menu Item">
-        <h3>Polvo á Lagareiro
-        <br>  
-         8.99€</h3>
-        <p>Indulge in the crispy delight of our lightly breaded calamari rings. Served golden brown and accompanied by a tangy marinara sauce for dipping, this appetizer is a crowd favorite.</p>
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/ChocoFrito.jpg" alt="Menu Item">
-        <h3>Choco frito
-        <br>
-        10.99€</h3>
-        <p>Experience the velvety goodness of our luxurious lobster bisque. This creamy soup is made with the finest fresh lobster, delicately cooked to perfection and infused with a hint of sherry for a truly indulgent taste.</p>
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/Lavagante.jpg" alt="Menu Item">
-        <h3>Lavagante
-        <br>
-        14.99€</h3>
-        <p>Savor the tender and flavorful sensation of our grilled octopus. Cooked to tender perfection and served with a zesty lemon herb sauce, this dish offers a delightful combination of taste and texture.</p>
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/Sapateira.jpg" alt="Menu Item">
-        <h3>Sapateira
+    <h2>Our Menu</h2>
+    <nav>
+      <ul>
+        <li><button class="menu-nav-btn" data-type="especialidades">Especialidades</button></li>
+        <li><button class="menu-nav-btn" data-type="entradas">Entradas</button></li>
+        <li><button class="menu-nav-btn" data-type="peixe">Peixe do Mar</button></li>
+        <li><button class="menu-nav-btn" data-type="criancas">Para crianças</button></li>
+        <li><button class="menu-nav-btn" data-type="vegetarianos">Vegetarianos</button></li>
+        <li><button class="menu-nav-btn" data-type="carnes">Carnes</button></li>
+        <li><button class="menu-nav-btn" data-type="sobremesas">Sobremesas</button></li>
+      </ul>
+    </nav>
+    <div class="menu-container" data-type="especialidades">
+        <div class="menu-item">
+          <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
+          <h3>Bacalhau á Lagareiro
+          <br>  
+            12.99€
+          </h3>
+          <p>Our signature dish is a tantalizing combination of linguine pasta and a medley of fresh seafood, including succulent shrimp, tender scallops, and flavorful mussels, all tossed in a rich garlic butter sauce. Served with a side of garlic bread.</p>
+        </div>
+  
+        <div class="menu-item">
+          <img src="media/imgs/PolvoLagareiro.jpg" alt="Menu Item">
+          <h3>Polvo á Lagareiro
+          <br>  
+           8.99€</h3>
+          <p>Indulge in the crispy delight of our lightly breaded calamari rings. Served golden brown and accompanied by a tangy marinara sauce for dipping, this appetizer is a crowd favorite.</p>
+        </div>
+  
+        <div class="menu-item">
+          <img src="media/imgs/ChocoFrito.jpg" alt="Menu Item">
+          <h3>Choco frito
           <br>
-         16.99€</h3>
-        <p>Transport yourself to the vibrant flavors of Spain with our seafood paella. This classic dish features saffron-infused rice cooked to perfection, combined with an array of fresh seafood, including shrimp, mussels, clams, and calamari, along with a medley of seasonal vegetables.</p>   
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/PeixeGrelhado.jpg" alt="Menu Item">
-        <h3>Peixe grelhado
+          10.99€</h3>
+          <p>Experience the velvety goodness of our luxurious lobster bisque. This creamy soup is made with the finest fresh lobster, delicately cooked to perfection and infused with a hint of sherry for a truly indulgent taste.</p>
+        </div>
+  
+        <div class="menu-item">
+          <img src="media/imgs/Lavagante.jpg" alt="Menu Item">
+          <h3>Lavagante
           <br>
-         16.99€</h3>
-        <p>Transport yourself to the vibrant flavors of Spain with our seafood paella. This classic dish features saffron-infused rice cooked to perfection, combined with an array of fresh seafood, including shrimp, mussels, clams, and calamari, along with a medley of seasonal vegetables.</p> 
+          14.99€</h3>
+          <p>Savor the tender and flavorful sensation of our grilled octopus. Cooked to tender perfection and served with a zesty lemon herb sauce, this dish offers a delightful combination of taste and texture.</p>
+        </div>
+  
+        <div class="menu-item">
+          <img src="media/imgs/Sapateira.jpg" alt="Menu Item">
+          <h3>Sapateira
+            <br>
+           16.99€</h3>
+          <p>Transport yourself to the vibrant flavors of Spain with our seafood paella. This classic dish features saffron-infused rice cooked to perfection, combined with an array of fresh seafood, including shrimp, mussels, clams, and calamari, along with a medley of seasonal vegetables.</p>   
+        </div>
+  
+        <div class="menu-item">
+          <img src="media/imgs/PeixeGrelhado.jpg" alt="Menu Item">
+          <h3>Peixe grelhado
+            <br>
+           16.99€</h3>
+          <p>Transport yourself to the vibrant flavors of Spain with our seafood paella. This classic dish features saffron-infused rice cooked to perfection, combined with an array of fresh seafood, including shrimp, mussels, clams, and calamari, along with a medley of seasonal vegetables.</p> 
+        </div>
+      </div>
+
+    <div class="menu-container" data-type="entradas">
+
+      <div class="menu-item">
+        <img src="media/imgs/PolvoLagareiro.jpg" alt="Menu Item">
+        <h3>Polvo á Lagareiro
+        <br>  
+         8.99€</h3>
+        <p>Indulge in the crispy delight of our lightly breaded calamari rings. Served golden brown and accompanied by a tangy marinara sauce for dipping, this appetizer is a crowd favorite.</p>
       </div>
     </div>
 
-    <br>
-    <br>
-    <h2>Entradas</h2>
-    <div class="menu-container">
+    <div class="menu-container" data-type="peixe">
+      <div class="menu-item">
+        <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
+        <h3>Bacalhau á Lagareiro
+        <br>  
+          12.99€
+        </h3>
+        <p>Our signature dish is a tantalizing combination of linguine pasta and a medley of fresh seafood, including succulent shrimp, tender scallops, and flavorful mussels, all tossed in a rich garlic butter sauce. Served with a side of garlic bread.</p>
+      </div>
+    </div>  
+
+    <div class="menu-container" data-type="criancas">
       <div class="menu-item">
         <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
         <h3>Bacalhau á Lagareiro
@@ -224,10 +255,7 @@ header.visible {
       </div>
     </div>
 
-    <br>
-    <br>
-    <h2>Peixe do Mar</h2>
-    <div class="menu-container">
+    <div class="menu-container" data-type="vegetarianos">
       <div class="menu-item">
         <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
         <h3>Bacalhau á Lagareiro
@@ -246,10 +274,7 @@ header.visible {
       </div>
     </div>
 
-    <br>
-    <br>
-    <h2>Para crianças</h2>
-    <div class="menu-container">
+    <div class="menu-container" data-type="carnes">
       <div class="menu-item">
         <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
         <h3>Bacalhau á Lagareiro
@@ -268,73 +293,25 @@ header.visible {
       </div>
     </div>
 
-    <br>
-    <br>
-    <h2>Vegetarianos</h2>
-    <div class="menu-container">
-      <div class="menu-item">
-        <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
-        <h3>Bacalhau á Lagareiro
-        <br>  
-          12.99€
-        </h3>
-        <p>Our signature dish is a tantalizing combination of linguine pasta and a medley of fresh seafood, including succulent shrimp, tender scallops, and flavorful mussels, all tossed in a rich garlic butter sauce. Served with a side of garlic bread.</p>
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/PolvoLagareiro.jpg" alt="Menu Item">
-        <h3>Polvo á Lagareiro
-        <br>  
-         8.99€</h3>
-        <p>Indulge in the crispy delight of our lightly breaded calamari rings. Served golden brown and accompanied by a tangy marinara sauce for dipping, this appetizer is a crowd favorite.</p>
-      </div>
+    <div class="menu-container" data-type="sobremesas">
+        <div class="menu-item">
+          <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
+          <h3>Bacalhau á Lagareiro
+          <br>  
+            12.99€
+          </h3>
+          <p>Our signature dish is a tantalizing combination of linguine pasta and a medley of fresh seafood, including succulent shrimp, tender scallops, and flavorful mussels, all tossed in a rich garlic butter sauce. Served with a side of garlic bread.</p>
+        </div>
+  
+        <div class="menu-item">
+          <img src="media/imgs/PolvoLagareiro.jpg" alt="Menu Item">
+          <h3>Polvo á Lagareiro
+          <br>  
+           8.99€</h3>
+          <p>Indulge in the crispy delight of our lightly breaded calamari rings. Served golden brown and accompanied by a tangy marinara sauce for dipping, this appetizer is a crowd favorite.</p>
+        </div>
     </div>
-
-    <br>
-    <br>
-    <h2>Carnes</h2>
-    <div class="menu-container">
-      <div class="menu-item">
-        <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
-        <h3>Bacalhau á Lagareiro
-        <br>  
-          12.99€
-        </h3>
-        <p>Our signature dish is a tantalizing combination of linguine pasta and a medley of fresh seafood, including succulent shrimp, tender scallops, and flavorful mussels, all tossed in a rich garlic butter sauce. Served with a side of garlic bread.</p>
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/PolvoLagareiro.jpg" alt="Menu Item">
-        <h3>Polvo á Lagareiro
-        <br>  
-         8.99€</h3>
-        <p>Indulge in the crispy delight of our lightly breaded calamari rings. Served golden brown and accompanied by a tangy marinara sauce for dipping, this appetizer is a crowd favorite.</p>
-      </div>
-    </div>
-
-    <br>
-    <br>
-    <h2>Sobremesas</h2>
-    <div class="menu-container">
-      <div class="menu-item">
-        <img src="media/imgs/BacalhauLagareiro.jpg" alt="Menu Item">
-        <h3>Bacalhau á Lagareiro
-        <br>  
-          12.99€
-        </h3>
-        <p>Our signature dish is a tantalizing combination of linguine pasta and a medley of fresh seafood, including succulent shrimp, tender scallops, and flavorful mussels, all tossed in a rich garlic butter sauce. Served with a side of garlic bread.</p>
-      </div>
-
-      <div class="menu-item">
-        <img src="media/imgs/PolvoLagareiro.jpg" alt="Menu Item">
-        <h3>Polvo á Lagareiro
-        <br>  
-         8.99€</h3>
-        <p>Indulge in the crispy delight of our lightly breaded calamari rings. Served golden brown and accompanied by a tangy marinara sauce for dipping, this appetizer is a crowd favorite.</p>
-      </div>
-
-    </div>
-  </section>
+</section>
 
   <section id="about">
     <div class="container">

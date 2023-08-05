@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500;600&display=swap');
+@keyframes jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
+.jump-animation {
+  animation: jump 0.5s;
+}
 
 /* Reset default browser styles */
 * {
@@ -90,6 +104,7 @@ body {
 #menu {
   background-color: #dddddd;
   padding: 100px 0;
+  text-align: center; /* Center the menu items horizontally */
 }
 
 #menu h2 {
@@ -98,12 +113,50 @@ body {
   margin-bottom: 20px;
 }
 
-.menu-container {
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 10px;
+}
+
+/* Add transition effect for menu buttons */
+.menu-nav-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #444444; /* Darker shade for the buttons */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-nav-btn:hover {
+  color: #dddddd; /* Change color on hover to match the background */
+  transform: scale(1.1); /* Add scale effect on hover */
+}
+
+.menu-nav-btn:focus {
+  outline: none;
+}
+
+.menu-container.active {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
   margin-top: 50px;
+}
+
+.menu-container {
+  display: none;
 }
 
 .menu-item {

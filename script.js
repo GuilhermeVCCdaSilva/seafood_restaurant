@@ -115,4 +115,43 @@ document.querySelectorAll('nav a').forEach(link => {
 document.getElementById("toggleHeaderBtn").addEventListener("click", function() {
   var header = document.querySelector('header');
   header.classList.toggle('visible');
+
+  var menuButtonIcon = document.getElementById("toggleHeaderBtn").querySelector('i');
+
+  if (header.classList.contains('visible')) {
+    // Change the button icon to 'fa-times' when the header is active
+    menuButtonIcon.classList.remove('fa-bars');
+    menuButtonIcon.classList.add('fa-times');
+  } else {
+    // Change the button icon back to 'fa-bars' when the header is not active
+    menuButtonIcon.classList.remove('fa-times');
+    menuButtonIcon.classList.add('fa-bars');
+  }
 });
+
+const filterMenuItems = (type) => {
+  const menuContainers = document.querySelectorAll('.menu-container');
+  menuContainers.forEach((container) => {
+    if (container.getAttribute('data-type') === type) {
+      container.classList.add('active');
+      container.classList.add('jump-animation'); // Add jump animation class
+    } else {
+      container.classList.remove('active');
+      container.classList.remove('jump-animation'); // Remove jump animation class from other containers
+    }
+  });
+};
+
+// Add event listeners for menu nav buttons
+const menuNavButtons = document.querySelectorAll('.menu-nav-btn');
+menuNavButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const type = button.getAttribute('data-type');
+    filterMenuItems(type);
+  });
+});
+
+// Initially show the "Especialidades" menu items
+filterMenuItems('especialidades');
+
+
