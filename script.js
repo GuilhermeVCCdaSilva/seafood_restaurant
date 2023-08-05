@@ -129,17 +129,39 @@ document.getElementById("toggleHeaderBtn").addEventListener("click", function() 
   }
 });
 
+
+let isFirstLoad = true;
+
 const filterMenuItems = (type) => {
   const menuContainers = document.querySelectorAll('.menu-container');
+  let activeContainer = null;
+
   menuContainers.forEach((container) => {
     if (container.getAttribute('data-type') === type) {
       container.classList.add('active');
       container.classList.add('jump-animation'); // Add jump animation class
+      if (!activeContainer) {
+        activeContainer = container;
+      }
     } else {
       container.classList.remove('active');
       container.classList.remove('jump-animation'); // Remove jump animation class from other containers
     }
   });
+
+  // Scroll to the first active menu container in mobile after the first load
+  if (!isFirstLoad && window.innerWidth <= 768 && activeContainer) {
+    const offsetTop = activeContainer.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({
+      top: offsetTop,
+      behavior: 'smooth',
+    });
+  }
+
+  // Set the isFirstLoad flag to false after the first load
+  if (isFirstLoad) {
+    isFirstLoad = false;
+  }
 };
 
 // Add event listeners for menu nav buttons
@@ -155,3 +177,27 @@ menuNavButtons.forEach((button) => {
 filterMenuItems('especialidades');
 
 
+document.getElementById("toggleMenuHeader").addEventListener("click", function() {
+  const menuNavButtons = document.querySelectorAll('.menu-nav-btn');
+  const mobileHeaderMenuBtn = document.getElementById("toggleMenuHeader");
+
+  // Toggle the active class on the caret-down and caret-up buttons
+  mobileHeaderMenuBtn.classList.toggle('active');
+
+  // Toggle the visibility of the menu buttons with a delay for smooth animation
+  menuNavButtons.forEach((button, index) => {
+    setTimeout(() => {
+      button.classList.toggle('visible');
+    }, index * 100);
+  });
+
+  // Update the caret icon class based on the active class
+  const caretIcon = mobileHeaderMenuBtn.querySelector('i');
+  if (mobileHeaderMenuBtn.classList.contains('active')) {
+    caretIcon.classList.remove('fa-caret-down');
+    caretIcon.classList.add('fa-caret-up');
+  } else {
+    caretIcon.classList.remove('fa-caret-up');
+    caretIcon.classList.add('fa-caret-down');
+  }
+});
